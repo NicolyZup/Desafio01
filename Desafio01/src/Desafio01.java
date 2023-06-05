@@ -21,6 +21,12 @@ public class Desafio01 {
         List<Integer> numUsuario = new ArrayList<>();
         List<Integer> numComputador =new ArrayList<>();
 
+        System.out.println("Bem-vindo(a) ao jogo!");
+        System.out.println("---------------------");
+        System.out.println("Informe o número de nível do jogo:");
+        System.out.println("(1)Baixo - números de 0 a 10 \r\n (2)Médio - números de 0 a 100 \r\n (3)Alto - números de 0 a 1.000");
+        int nivel = entrada.nextInt();
+
         int pontuacao = 0;
         int contador = 1;
         int numInformado = 0;
@@ -30,8 +36,6 @@ public class Desafio01 {
             int numGerado = gerador.nextInt(100);
             numComputador.add(numGerado);
 
-            System.out.println("Bem-vindo(a) ao jogo!");
-            System.out.println("---------------------");
             System.out.println("Informe um número aleatório de 0 a 100:");
             numInformado = entrada.nextInt();
             numUsuario.add(numInformado);
