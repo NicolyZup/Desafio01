@@ -19,18 +19,17 @@ public class Desafio01 {
         Scanner entrada = new Scanner(System.in);
 
         List<Integer> numUsuario = new ArrayList<>();
-        List<Integer> numComputador =new ArrayList<>();
 
         System.out.println("BEM VINDO(A) AO JOGO!");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Regras : \r\n- Se seu número for maior que o número da máquina: você ganha 5 pontos\r\n- Se seu número for menor que o número da máquina você apenas perde\r\n- Se seu número for igual ao número da máquina: você ganha 10 pontos");
+        System.out.println("Regras : \r\n- Se seu número for 1 acima que o número da máquina: você ganha 5 pontos\r\n- Se seu número for 1 abaixo que o número da máquina: você ganha 5 pontos\r\n- Se seu número for igual ao número da máquina: você ganha 10 pontos\r\n- Caso contrário das regras acima você apenas perde");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("Informe o número do nível desejado do jogo:");
         System.out.println("(1)Baixo - números de 0 a 10 \r\n(2)Médio - números de 0 a 100 \r\n(3)Alto - números de 0 a 1.000");
         int nivelInformado = entrada.nextInt();
 
         int pontuacao = 0;
-        int contador = 1;
+        boolean jogarNovamente= true;
         int nivel = 0;
 
         switch (nivelInformado){
@@ -47,42 +46,43 @@ public class Desafio01 {
                 System.out.println("Nível informado inválido.");
         }
 
-        while(contador >= 1){
+        while(jogarNovamente){
+
             Random gerador = new Random();
             int numGerado = gerador.nextInt(nivel);
-            numComputador.add(numGerado);
 
             System.out.println("Informe um número aleatório de 0 a " + nivel + ":");
-            int numInformado = entrada.nextInt();
-            numUsuario.add(numInformado);
+            int numInformado = entrada.nextInt();;
 
             if (numInformado == numGerado){
                 pontuacao += 10;
-            } else if (numInformado > numGerado) {
+                numUsuario.add(numInformado);
+                System.out.println("Você ganhou :)");
+            } else if (numInformado == numGerado -1) {
                 pontuacao += 5;
+                System.out.println("Chegou perto: 5 pontos");
+            } else if (numInformado == numGerado +1) {
+                pontuacao += 5;
+                System.out.println("Chegou perto: 5 pontos");
             } else {
                 System.out.println("Você perdeu :(");
             }
 
             System.out.println("Seu número: " + numInformado);
-            System.out.println("Número da máquina: " + numGerado);
             System.out.println("Sua pontuação: " + pontuacao);
 
             System.out.println("----------------------------------");
             System.out.println("Deseja jogar novamente? 1-Sim, 2-Não");
-            int jogarNovamente = entrada.nextInt();
+            int jogar = entrada.nextInt();
 
-            if(jogarNovamente ==1){
-                contador += 1;
-            } else {
-                contador = 0;
+            if(jogar !=1){
+                jogarNovamente = false;
             }
         }
 
         System.out.println("------------------------------");
         System.out.println("Fim de jogo!");
-        System.out.println("Seus números: " + numUsuario);
-        System.out.println("Números da máquina: " + numComputador);
+        System.out.println("Seus acertos: " + numUsuario);
         System.out.println("Sua pontuação: " + pontuacao);
     }
 }
