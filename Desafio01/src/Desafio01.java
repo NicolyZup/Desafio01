@@ -21,22 +21,39 @@ public class Desafio01 {
         List<Integer> numUsuario = new ArrayList<>();
         List<Integer> numComputador =new ArrayList<>();
 
-        System.out.println("Bem-vindo(a) ao jogo!");
-        System.out.println("---------------------");
-        System.out.println("Informe o número de nível do jogo:");
-        System.out.println("(1)Baixo - números de 0 a 10 \r\n (2)Médio - números de 0 a 100 \r\n (3)Alto - números de 0 a 1.000");
-        int nivel = entrada.nextInt();
+        System.out.println("BEM VINDO(A) AO JOGO!");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Regras : \r\n- Se seu número for maior que o número da máquina: você ganha 5 pontos\r\n- Se seu número for menor que o número da máquina você apenas perde\r\n- Se seu número for igual ao número da máquina: você ganha 10 pontos");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Informe o número do nível desejado do jogo:");
+        System.out.println("(1)Baixo - números de 0 a 10 \r\n(2)Médio - números de 0 a 100 \r\n(3)Alto - números de 0 a 1.000");
+        int nivelInformado = entrada.nextInt();
 
         int pontuacao = 0;
         int contador = 1;
         int numInformado = 0;
+        int nivel = 0;
+
+        switch (nivelInformado){
+            case 1:
+                nivel =10;
+                break;
+            case 2:
+                nivel = 100;
+                break;
+            case 3:
+                nivel = 1000;
+                break;
+            default:
+                System.out.println("Nível informado inválido.");
+        }
 
         while(contador >= 1){
             Random gerador = new Random();
-            int numGerado = gerador.nextInt(100);
+            int numGerado = gerador.nextInt(nivel);
             numComputador.add(numGerado);
 
-            System.out.println("Informe um número aleatório de 0 a 100:");
+            System.out.println("Informe um número aleatório de 0 a " + nivel + ":");
             numInformado = entrada.nextInt();
             numUsuario.add(numInformado);
 
@@ -67,5 +84,6 @@ public class Desafio01 {
         System.out.println("Fim de jogo!");
         System.out.println("Seus números: " + numUsuario);
         System.out.println("Números da máquina: " + numComputador);
+        System.out.println("Sua pontuação: " + pontuacao);
     }
 }
