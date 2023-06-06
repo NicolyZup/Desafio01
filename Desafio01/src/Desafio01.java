@@ -31,7 +31,6 @@ public class Desafio01 {
 
         int pontuacao = 0;
         int contador = 1;
-        int numInformado = 0;
         int nivel = 0;
 
         switch (nivelInformado){
@@ -54,7 +53,7 @@ public class Desafio01 {
             numComputador.add(numGerado);
 
             System.out.println("Informe um número aleatório de 0 a " + nivel + ":");
-            numInformado = entrada.nextInt();
+            int numInformado = entrada.nextInt();
             numUsuario.add(numInformado);
 
             if (numInformado == numGerado){
